@@ -1,9 +1,19 @@
 <template>
-    <div v-for="(house) in houses" :key="house.id">
-        <House 
-            :house="house"
-        />
-    </div>
+    <va-list>
+        <!-- <va-list-label>
+        Casas
+        </va-list-label> -->
+
+        <va-list-item 
+            v-for="(house) in houses" 
+            :key="house.id"
+        >
+            <House 
+                :house="house"
+            />
+        </va-list-item>
+
+    </va-list>
 </template>
 
 <script>

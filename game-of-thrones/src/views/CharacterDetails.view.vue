@@ -1,16 +1,16 @@
 <template>
   <div>
-    <h3>Nombre: {{character.name}}</h3>
-    <p>Género: {{character.gender}}</p>
+    <h3 class="display-3"> {{character.name}}</h3>
+    <p>Género: {{character.gender=='male'?'Hombre':'Mujer'}}</p>
     <p>Cultura: {{character.culture}}</p>
-    <p>Nació: {{character.born}}</p>
-    <p>Murió: {{character.died}}</p>
+    <p v-if="character.born.length>0">Nació: {{character.born}}</p>
+    <p v-if="character.died.length>0">Murió: {{character.died}}</p>
 
     <!-- array of strings -->
-    <p>Títulos: {{character.titles.toString()}}</p>
+    <p v-if="character.titles.length>0">Títulos: {{character.titles.toString()}}</p>
 
     <!-- array of strings -->
-    <p>Alias: {{character.aliases.toString()}}</p>
+    <p v-if="character.aliases.length>0 ? character.aliases[0].length>0 ? true : false : false">Alias: {{character.aliases.toString()}}</p>
 
     <!-- father -->
     <div v-if="father!=null">

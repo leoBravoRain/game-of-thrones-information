@@ -1,6 +1,13 @@
 <template>
   <div id="nav">
-    <router-link to="/">Casas</router-link> 
+    <va-button @click="this.$router.push({'name':'Home'})">
+      <va-icon name="home" class="mr-1"/>
+      Casas
+      <!-- <router-link to="/">Casas</router-link>  -->
+      
+      <!-- <va-icon class="material-icons" style="margin:50">home</va-icon> -->
+      <!-- Casas -->
+    </va-button>
     <!-- | -->
     <!-- <router-link to="/about">About</router-link> -->
   </div>
@@ -25,7 +32,7 @@
   color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+/* #nav a.router-link-exact-active {
+  color: white;
+} */
 </style>

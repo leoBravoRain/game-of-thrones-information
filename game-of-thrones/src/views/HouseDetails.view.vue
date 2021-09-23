@@ -1,14 +1,34 @@
+// class="flex align--center align-content--center justify--center"
+
 <template>
-    <div>
-       <h3>Nombre: {{house.name}}</h3> 
-       <h3>Region: {{house.region}}</h3> 
-       <h3>Palabras: {{house.words}}</h3> 
-       <Character
-            v-if="currentLord!=null"
-            :character="currentLord"
-       />
-        <div v-else>
-            No tiene lord actualmente
+    <div class="row">
+
+        <!-- image -->
+        <div class="flex md4 xs12" 
+        >
+            <img :src="require('../assets/images/'+ house.url.split('/')[5] + '.png')">
+        </div>
+        
+        <!-- data -->
+        <div 
+            class="flex md8 xs12" 
+        >
+            <h3 class="display-3 ">{{house.name}}</h3> 
+            <p>Region: {{house.region}}</p> 
+            <p v-if="house.words.length>0">Palabras: {{house.words}}</p> 
+            <div 
+                class="row"
+            >
+                <p>Señor:</p>
+                <Character
+                        v-if="currentLord!=null"
+                        :character="currentLord"
+                />
+                <div v-else>
+                    No tiene lord actualmente
+                </div>
+            </div>
+
         </div>
        
        <!-- <h3>{{house.currentLord}}</h3>  -->
