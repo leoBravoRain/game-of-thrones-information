@@ -1,26 +1,41 @@
 <template>
-    <div @click="onClick">
+    <!-- <div @click="onClick"> -->
 
-    <va-list-item-section>
+    <!-- <va-list-item-section> -->
+        <va-hover v-model="hover">
 
-        <va-card style="padding:10px">
+        <va-card 
+            style="padding:10px;margin:10px;" 
+            @click="onClick"
+            :dark="hover"
+            href="#"
+        >
 
             <div class="row">
 
-            <va-avatar>
-                <img :src="require('../assets/images/'+ house.url.split('/')[5] + '.png')">
-            </va-avatar>
+                <va-avatar style="margin-right:10px;">
+                    <img :src="require('../assets/images/'+ house.url.split('/')[5] + '.png')">
+                </va-avatar>
 
-            <!-- <var-card-title> {{ house.name }} </var-card-title> -->
-            <va-list-item-section style="margin-left:15px">
-                <va-list-item-label>
-                    {{ house.name }}
-                </va-list-item-label>
+                <!-- <var-card-title> {{ house.name }} </var-card-title> -->
+                <!-- <va-list-item-section style="margin-left:15px"> -->
+                <div
+                    style="text-align:left"
+                    class="column"
+                >
+                    <!-- <va-list-item-label> -->
+                    <p>
+                        {{ house.name }}
+                    <!-- </va-list-item-label> -->
+                    </p>
 
-                <va-list-item-label caption style="text-align:left">
-                    {{ house.region }}
-                </va-list-item-label>
-            </va-list-item-section>
+                    <!-- <va-list-item-label caption style="text-align:left"> -->
+                    <p class="text--secondary">
+                        {{ house.region }}
+                    <!-- </va-list-item-label> -->
+                    </p>
+                <!-- </va-list-item-section> -->
+                </div>
 
             </div>
 
@@ -34,9 +49,11 @@
        <!-- <p>{{house.day}}</p> -->
        <!-- <i @click='$emit("delete-house", house.id)' class="fas fa-times"></i> -->
        </va-card>
-    </va-list-item-section>
 
-    </div>
+        </va-hover>
+    <!-- </va-list-item-section> -->
+
+    <!-- </div> -->
 </template>
 
 <script>
@@ -45,6 +62,11 @@ export default {
     name: "House",
     props: {
         house: Object,
+    },
+    data () {
+        return {
+            hover:false,
+        }
     },
     methods: {
         onClick() {

@@ -1,19 +1,26 @@
 <template>
-    <va-list>
+    <!-- <va-list> -->
+    <div
+        class="row flex"
+    >
         <!-- <va-list-label>
         Casas
         </va-list-label> -->
 
-        <va-list-item 
+        <!-- <va-list-item  -->
+        <div
             v-for="(house) in houses" 
             :key="house.id"
+            class="flex md4 xs6"
         >
             <House 
                 :house="house"
             />
-        </va-list-item>
+        <!-- </va-list-item> -->
+        </div>
 
-    </va-list>
+    </div>
+    <!-- </va-list> -->
 </template>
 
 <script>

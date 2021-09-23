@@ -1,6 +1,9 @@
 <template>
   <div class="home">
+    <h1 class="display-2">Estas son las casas de Games of Thrones</h1>
+    <p class="text--secondary" style="margin:10px">Selecciona alguna que quieras ver</p>
     <Houses 
+      style="margin-top:20px;"
       :houses="houses"
     />
   </div>
