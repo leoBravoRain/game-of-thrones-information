@@ -19,24 +19,54 @@
         >
             <h3 
                 class="display-3" 
+                style="margin-bottom:20px"
             >
                 {{house.name}}
             </h3> 
-            <p>Region: {{house.region}}</p> 
-            <p v-if="house.words.length>0">Palabras: {{house.words}}</p> 
+
+            <!-- region -->
+            <div class="row">
+                <div class="flex xs6" style="text-align:end">
+                    Region
+                </div>
+                <div class="flex xs6" style="text-align:center">
+                    {{house.region}}
+                </div>
+                <!-- <p>Region: {{house.region}}</p>  -->
+            </div>
+            <va-divider/>
+            
+            <!-- words -->
+            <!-- <p v-if="house.words.length>0">Palabras: {{house.words}}</p>  -->
+            <div v-if="house.words.length>0" class="row">
+            <!-- <div class="row"> -->
+                <div class="flex xs6" style="text-align:end">
+                    Palabras
+                </div>
+                <div class="flex xs6" style="text-align:center">
+                    {{house.words}}
+                </div>
+                <!-- <p>Region: {{house.region}}</p>  -->
+            </div>
+            <va-divider v-if="house.words.length>0"/>
+
+            <!-- lord -->
             <div 
                 class="flex row"
             >
-                <p class="md6">Señor:</p>
+                <p class="md6" style="text-align:end">Lord</p>
                 <Character
                     class="md6"
                     v-if="currentLord!=null"
                     :character="currentLord"
                 />
-                <div v-else>
-                    No tiene lord actualmente
+                <div v-else class="flex xs6">
+                    <p>
+                    No tiene Lord actualmente
+                    </p>
                 </div>
             </div>
+            <!-- <va-divider/> -->
 
         </div>
        

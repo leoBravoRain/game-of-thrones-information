@@ -1,16 +1,26 @@
 <template>
   <div>
     <h3 class="display-3"> {{character.name}}</h3>
+
     <p>Género: {{character.gender=='male'?'Hombre':'Mujer'}}</p>
+    <va-divider/>
+
     <p>Cultura: {{character.culture}}</p>
+    <va-divider/>
+
     <p v-if="character.born.length>0">Nació: {{character.born}}</p>
+    <va-divider v-if="character.born.length>0"/>
+
     <p v-if="character.died.length>0">Murió: {{character.died}}</p>
+    <va-divider v-if="character.died.length>0"/>
 
     <!-- array of strings -->
     <p v-if="character.titles.length>0">Títulos: {{character.titles.toString()}}</p>
+    <va-divider v-if="character.titles.length>0"/> 
 
     <!-- array of strings -->
     <p v-if="character.aliases.length>0 ? character.aliases[0].length>0 ? true : false : false">Alias: {{character.aliases.toString()}}</p>
+    <va-divider v-if="character.aliases.length>0 ? character.aliases[0].length>0 ? true : false : false"/> 
 
     <!-- father -->
     <div 
@@ -23,6 +33,7 @@
         :character="father"
       />
     </div>
+    <va-divider v-if="father!=null"/>
 
     <!-- mother -->
     <div 
@@ -35,6 +46,7 @@
         :character="mather"
       />
     </div>
+    <va-divider v-if="mather!=null"/>
 
     <!-- spouse -->
     <div 
@@ -47,6 +59,7 @@
         :character="spouse"
       />
     </div>
+    <va-divider v-if="spouse!=null"/>
 
     <!-- allegiance -->
     <div 
