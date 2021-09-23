@@ -13,33 +13,49 @@
     <p v-if="character.aliases.length>0 ? character.aliases[0].length>0 ? true : false : false">Alias: {{character.aliases.toString()}}</p>
 
     <!-- father -->
-    <div v-if="father!=null">
-      <p>Padre:</p>
+    <div 
+      v-if="father!=null"
+      class="flex row"
+    >
+      <p class="md6">Padre:</p>
       <Character
+        class="md6"
         :character="father"
       />
     </div>
 
     <!-- mother -->
-    <div v-if="mather!=null">
-      <p>Madre:</p>
+    <div 
+      v-if="mather!=null"
+      class="flex row"
+    >
+      <p class="md6">Madre:</p>
       <Character
+        class="md6"
         :character="mather"
       />
     </div>
 
     <!-- spouse -->
-    <div v-if="spouse!=null">
-      <p>Espos@:</p>
+    <div 
+      v-if="spouse!=null"
+      class="flex row"
+    >
+      <p class="md6" style="text-align:right; margin-right:20px;">Espos@:</p>
       <Character
+        class="md6"
         :character="spouse"
       />
     </div>
 
     <!-- allegiance -->
-    <div v-if="allegiances!=null">
-      <p>Lealtades:</p>
+    <div 
+      v-if="allegiances!=null" 
+      class="flex row"
+    >
+      <p class="md6">Lealtades:</p>
       <Houses
+        class="md6"
         :houses="allegiances"
       />
     </div>
@@ -132,3 +148,9 @@ export default {
 
 }
 </script>
+
+<style scoped>
+  p {
+    margin-top: 10px;
+  }
+</style>

@@ -13,7 +13,7 @@
             <div class="row">
 
                 <va-avatar style="margin-right:10px;">
-                    <img :src="require('../assets/images/'+ house.url.split('/')[5] + '.png')">
+                    <img  :src="require('../assets/images/'+ house.url.split('/')[5] + '.png')">
                 </va-avatar>
 
                 <!-- <var-card-title> {{ house.name }} </var-card-title> -->

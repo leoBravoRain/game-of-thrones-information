@@ -7,15 +7,21 @@
         <div 
             class="flex md4 xs12" 
         >
-            <img :src="require('../assets/images/'+ house.url.split('/')[5] + '.png')">
+            <img 
+                :src="require('../assets/images/'+ house.url.split('/')[5] + '.png')"
+                style="max-width:300px"
+            >
         </div>
         
         <!-- data -->
         <div 
             class="flex md8 xs12" 
         >
-            <h3 class="display-3 " 
-            >{{house.name}}</h3> 
+            <h3 
+                class="display-3" 
+            >
+                {{house.name}}
+            </h3> 
             <p>Region: {{house.region}}</p> 
             <p v-if="house.words.length>0">Palabras: {{house.words}}</p> 
             <div 
