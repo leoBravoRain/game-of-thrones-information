@@ -1,6 +1,13 @@
 <template>
-    <div class="flex md4 xs4">
-        <va-card @click="onClick">
+    <!-- <div class="flex md4 xs4"> -->
+    <!-- <div 
+    > -->
+    <va-hover v-model="hover">
+        <va-card 
+            @click="onClick" 
+            style="width:max-content;padding:10px;margin:10px;cursor:pointer"
+            :dark="hover"
+        >
             <div class="row">
                 <va-avatar>
                     <img :src="require('../assets/images/' + (character.gender == 'male' ? 'male' : 'female') + '.jpg')">
@@ -13,7 +20,8 @@
        <!-- <p>{{character.day}}</p> -->
        <!-- <i @click='$emit("delete-character", character.id)' class="fas fa-times"></i> -->
         </va-card>
-    </div>
+    </va-hover>
+    <!-- </div> -->
 </template>
 
 <script>
@@ -22,6 +30,11 @@ export default {
     name: "Character",
     props: {
         character: Object,
+    },
+    data () {
+        return {
+            hover:false,
+        }
     },
     methods: {
         onClick() {

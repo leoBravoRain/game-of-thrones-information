@@ -4,7 +4,8 @@
     <div class="row">
 
         <!-- image -->
-        <div class="flex md4 xs12" 
+        <div 
+            class="flex md4 xs12" 
         >
             <img :src="require('../assets/images/'+ house.url.split('/')[5] + '.png')">
         </div>
@@ -13,16 +14,18 @@
         <div 
             class="flex md8 xs12" 
         >
-            <h3 class="display-3 ">{{house.name}}</h3> 
+            <h3 class="display-3 " 
+            >{{house.name}}</h3> 
             <p>Region: {{house.region}}</p> 
             <p v-if="house.words.length>0">Palabras: {{house.words}}</p> 
             <div 
-                class="row"
+                class="flex row"
             >
-                <p>Señor:</p>
+                <p class="md6">Señor:</p>
                 <Character
-                        v-if="currentLord!=null"
-                        :character="currentLord"
+                    class="md6"
+                    v-if="currentLord!=null"
+                    :character="currentLord"
                 />
                 <div v-else>
                     No tiene lord actualmente
@@ -100,3 +103,10 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+    p {
+        /* background-color: black; */
+        margin-top: 20px;
+    }
+</style>

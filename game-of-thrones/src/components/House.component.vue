@@ -5,10 +5,9 @@
         <va-hover v-model="hover">
 
         <va-card 
-            style="padding:10px;margin:10px;" 
+            style="padding:10px;margin:10px;cursor:pointer" 
             @click="onClick"
             :dark="hover"
-            href="#"
         >
 
             <div class="row">
