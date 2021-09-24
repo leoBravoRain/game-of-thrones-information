@@ -38,9 +38,10 @@ export default {
     },
     methods: {
         onClick() {
-            // alert("go to " + this.character.name);
+            console.log(this.$router.currentRoute.value.name);
             // go to character details
             // pass character as parameter
+
             this.$router.push({ 
                 name: 'CharacterDetails', 
                 params: { 

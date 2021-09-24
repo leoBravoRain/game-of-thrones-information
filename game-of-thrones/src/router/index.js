@@ -28,6 +28,7 @@ const routes = [
     path: '/character/:character_id',
     name: 'CharacterDetails',
     component: CharacterDetails,
+    props: true,
     // props: true,
   },
 ]

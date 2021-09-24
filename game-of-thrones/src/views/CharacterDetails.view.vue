@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div v-if="character != null">
     <h3 class="display-3"> {{character.name}}</h3>
 
     <p>Género: {{character.gender=='male'?'Hombre':'Mujer'}}</p>
     <va-divider/>
 
-    <p>Cultura: {{character.culture}}</p>
-    <va-divider/>
+    <p v-if="character.culture.length>0">Cultura: {{character.culture}}</p>
+    <va-divider v-if="character.culture.length>0"/>
 
     <p v-if="character.born.length>0">Nació: {{character.born}}</p>
     <va-divider v-if="character.born.length>0"/>
@@ -37,16 +37,16 @@
 
     <!-- mother -->
     <div 
-      v-if="mather!=null"
+      v-if="mother!=null"
       class="flex row"
     >
       <p class="md6">Madre:</p>
       <Character
         class="md6"
-        :character="mather"
+        :character="mother"
       />
     </div>
-    <va-divider v-if="mather!=null"/>
+    <va-divider v-if="mother!=null"/>
 
     <!-- spouse -->
     <div 
@@ -74,6 +74,11 @@
     </div>
 
   </div>
+
+  <div v-else>
+      <va-progress-circle indeterminate />
+  </div>
+
 </template>
 
 <script>
@@ -89,7 +94,7 @@ export default {
   },
   data() {
     return {
-      character: Object,
+      character: null,
       father: null,
       mother: null,
       spouse: null,
@@ -118,13 +123,15 @@ export default {
   // when it's created
   async created() {
 
+    console.log("new load");
+    
     // get Character from parameter
     // const character = JSON.parse(this.$router.currentRoute.value.params.character);
     // this is using the character id
     const character = await this.fetchData(this.$route.params.character_id, false);
 
     // update character view
-    this.character = character 
+    this.character = character;
 
     // get father
     if (character.father.length > 0) {
