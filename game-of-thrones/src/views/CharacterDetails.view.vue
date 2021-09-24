@@ -101,6 +101,28 @@ export default {
       allegiances: null,
     }
   },
+
+  watch: {
+
+    // it's watching to route changes
+    // it's because it can load the same component but with other params. Vue does not "reload" the component with same route
+    $route(to, from) {
+    // $route() {
+      // react to route changes...
+
+      // if it's changeing the character
+      if(from.name == to.name & to.name == "CharacterDetails") {
+
+        // set to null to render loading
+        this.character = null;
+
+        // update character
+        this.getCharacter(to.params.character_id);
+
+      }
+      
+    }
+  },
   methods: {
 
     // get Character
@@ -118,52 +140,97 @@ export default {
 
     },
 
+    // get character
+    async getCharacter(characterId) {
+
+      // get Character from parameter
+      // const character = JSON.parse(this.$router.currentRoute.value.params.character);
+      // this is using the character id
+      const character = await this.fetchData(characterId, false);
+
+      // update character view
+      this.character = character;
+
+      // get father
+      if (character.father.length > 0) {
+          this.father = await this.fetchData(character.father);
+      }
+
+      // get mother
+      if (character.mother.length > 0) {
+          this.mother = await this.fetchData(character.mother);
+      }
+
+      // get spouse
+      if (character.spouse.length > 0) {
+          this.spouse = await this.fetchData(character.spouse);
+      }
+
+      // get allegiances
+      if (character.allegiances.length > 0) {
+        var urls = [];
+        character.allegiances.forEach((url) => {
+          // urls.push(url);
+          urls.push(this.fetchData(url));
+        });
+        // console.log("urls allegiances: ", urls);
+        // run all promises
+        // const allegiances = await Promise.all(urls);
+
+        // console.log("allegiances: ", allegiances)
+        // update allegiances
+        this.allegiances = await Promise.all(urls);
+        
+      }
+  
+    }
+
   },
 
   // when it's created
   async created() {
 
-    console.log("new load");
-    
-    // get Character from parameter
-    // const character = JSON.parse(this.$router.currentRoute.value.params.character);
-    // this is using the character id
-    const character = await this.fetchData(this.$route.params.character_id, false);
+    this.getCharacter(this.$route.params.character_id);
 
-    // update character view
-    this.character = character;
+    // // get Character from parameter
+    // // const character = JSON.parse(this.$router.currentRoute.value.params.character);
+    // // this is using the character id
+    // const character = await this.fetchData(this.$route.params.character_id, false);
 
-    // get father
-    if (character.father.length > 0) {
-        this.father = await this.fetchData(character.father);
-    }
+    // // update character view
+    // this.character = character;
 
-    // get mother
-    if (character.mother.length > 0) {
-        this.mother = await this.fetchData(character.mother);
-    }
+    // // get father
+    // if (character.father.length > 0) {
+    //     this.father = await this.fetchData(character.father);
+    // }
 
-    // get spouse
-    if (character.spouse.length > 0) {
-        this.spouse = await this.fetchData(character.spouse);
-    }
+    // // get mother
+    // if (character.mother.length > 0) {
+    //     this.mother = await this.fetchData(character.mother);
+    // }
 
-    // get allegiances
-    if (character.allegiances.length > 0) {
-      var urls = [];
-      character.allegiances.forEach((url) => {
-        // urls.push(url);
-        urls.push(this.fetchData(url));
-      });
-      // console.log("urls allegiances: ", urls);
-      // run all promises
-      // const allegiances = await Promise.all(urls);
+    // // get spouse
+    // if (character.spouse.length > 0) {
+    //     this.spouse = await this.fetchData(character.spouse);
+    // }
 
-      // console.log("allegiances: ", allegiances)
-      // update allegiances
-      this.allegiances = await Promise.all(urls);
+    // // get allegiances
+    // if (character.allegiances.length > 0) {
+    //   var urls = [];
+    //   character.allegiances.forEach((url) => {
+    //     // urls.push(url);
+    //     urls.push(this.fetchData(url));
+    //   });
+    //   // console.log("urls allegiances: ", urls);
+    //   // run all promises
+    //   // const allegiances = await Promise.all(urls);
+
+    //   // console.log("allegiances: ", allegiances)
+    //   // update allegiances
+    //   this.allegiances = await Promise.all(urls);
       
-    }
+    // }
   }
 
 }

@@ -1,4 +1,4 @@
 // new comment
 module.exports= {
-    publichPath: '/game-of-thrones-information/'
+    publicPath: '/game-of-throne-page/'
 }
